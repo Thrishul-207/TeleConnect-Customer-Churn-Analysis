@@ -1,36 +1,161 @@
- TeleConnect: Customer Churn Analysis
+# TeleConnect — Customer Churn Analysis
 
-You are the analyst the VP Customer hired to answer one question: who is leaving, and what do they have in common?
+## 📌 Project Overview
 
-## Files
-| Path | What it is |
-|---|---|
-| `customers_2025.csv` | ~7,000 customers, 14 columns — deliberately messy |
-| `teleconnect_churn_student.ipynb` | Your notebook: cleaning log, Q1–Q6, the brief |
+**TeleConnect Customer Churn Analysis** is a data analysis project focused on understanding customer churn and identifying customer profiles associated with higher churn.
 
-## Definition of done
-- [ ] Data-Quality Log with 7 rows: problem, rows affected, fix, *why this fix*
-- [ ] Clean shape, churn rate and mean tenure match the acceptance numbers given in class
-- [ ] Q1–Q5 answered with a chart and a one-sentence reading each; Q6 is your own
-- [ ] Q2 reports effect size *and* a test; Q3 uses a contingency table *and* a test
-- [ ] One-page churn brief (250–350 words) a VP can read without the notebook
-- [ ] Notebook runs top-to-bottom in a fresh kernel; five slides; two-minute pitch
+The main objective is to answer:
 
-## Rules
-No `sklearn`, no models. AI assistants for syntax and error messages only — the viva tests conclusions.
+> **Who is leaving, and what do they have in common?**
 
-## Grading (20)
-Data-quality log 4 · Guided questions 6 · Own question 3 · The brief 3 · Reproducibility 2 · Viva & pitch 2
+The analysis uses data cleaning, exploratory data analysis, visualization, and statistical testing to identify important patterns in customer churn.
 
-## Interview questions you will be asked
-1. What is the churn rate, and why is that number alone not enough?
-2. Support calls differ between churners and stayers — cause, effect, or neither? How would you find out?
-3. Which test did you use for a categorical feature, and what was its null hypothesis?
-4. Your riskiest segment is small. Is it still where the budget should go?
-5. What would you need to turn this analysis into a prediction?
+---
 
-## Run
-```bash
-pip install numpy pandas matplotlib seaborn scipy
-jupyter notebook teleconnect_churn_student.ipynb
-```
+## 🎯 Objectives
+
+* Clean and validate a customer dataset.
+* Calculate the overall customer churn rate.
+* Analyze churn across contract types, plans, cities, and tenure.
+* Compare support-call behavior between churners and stayers.
+* Identify high-risk customer segments.
+* Perform statistical hypothesis testing.
+* Analyze monthly charges within different plan types.
+* Provide data-driven insights for customer retention.
+
+---
+
+## 🛠️ Technologies Used
+
+* **Python**
+* **Pandas** — Data cleaning and analysis
+* **NumPy** — Numerical operations
+* **Matplotlib** — Data visualization
+* **Seaborn** — Statistical visualization
+* **SciPy** — Statistical hypothesis testing
+* **Jupyter Notebook**
+
+---
+
+## 📊 Dataset
+
+The dataset contains approximately 7,000 customer records with information including:
+
+* Customer ID
+* City
+* Age
+* Gender
+* Tenure
+* Plan Type
+* Contract Type
+* Monthly Charges
+* Total Charges
+* Support Calls
+* Payment Method
+* Broadband Subscription
+* Streaming Subscription
+* Churn Status
+
+The original dataset contains deliberately messy values that require preprocessing before analysis.
+
+---
+
+## 🧹 Data Cleaning
+
+The following data-quality issues were addressed:
+
+* Duplicate customer records
+* Inconsistent churn values such as `Yes`, `yes`, `No`, `no`, `1`, and `0`
+* Currency symbols and commas in monthly charges
+* Tenure values represented in both months and years
+* Invalid age values
+* Inconsistent city capitalization
+* Missing total charges
+
+After cleaning, the dataset contains **6,996 customers and 14 columns**.
+
+---
+
+## 🔍 Key Findings
+
+### Overall Churn
+
+The overall customer churn rate is approximately:
+
+**22.21%**
+
+### Contract Type
+
+Month-to-month customers have a churn rate of approximately **35.65%**, while two-year customers have a churn rate of approximately **3.91%**.
+
+A chi-square test found a statistically significant association between contract type and churn:
+
+**χ² = 876.66, p < 0.001**
+
+### Support Calls
+
+Churners averaged approximately **1.58 support calls**, compared with **1.11** for customers who stayed.
+
+Welch's t-test showed a statistically significant difference:
+
+**p < 0.001**
+
+The effect size was:
+
+**Cohen's d = 0.432**
+
+This indicates a moderate difference, but the analysis does not establish that support calls cause churn.
+
+### High-Risk Customer Profile
+
+A particularly high-risk profile was identified as:
+
+* Month-to-month contract
+* Tenure ≤ 6 months
+* 2 or more support calls
+
+This segment contains **213 customers** and has a churn rate of approximately **62.44%**, including **133 churners**.
+
+### Monthly Charges
+
+Within the Basic and Premium plans, churners had statistically lower average monthly charges than stayers. For the Standard plan, the difference was not statistically significant.
+
+This analysis therefore does not support the conclusion that higher monthly charges are associated with higher churn within a plan.
+
+---
+
+## 📈 Statistical Methods
+
+The project uses:
+
+* **Welch's independent-samples t-test**
+* **Cohen's d effect size**
+* **Chi-square test of independence**
+* Contingency tables
+* Group-level descriptive statistics
+
+The analysis focuses on **association rather than causation**.
+
+---
+
+## 💡 Business Insight
+
+The analysis suggests that retention efforts should pay particular attention to customers with **month-to-month contracts**, especially newer customers who have made multiple support calls.
+
+The high-risk profile can help identify a focused group for retention analysis, while the broader month-to-month customer population should also be considered because of its substantially higher observed churn rate.
+
+---
+
+## ⚠️ Project Scope
+
+This project focuses on **customer churn analysis, exploratory data analysis, visualization, and statistical inference**.
+
+The project does not build machine-learning prediction models. The findings represent associations observed in the available customer data and should not be interpreted as proof of causation.
+
+---
+
+## 👨‍💻 Author
+
+**Thrishul Sri Chandra Arala**
+
+Data Science | Python | Machine Learning | Generative AI
