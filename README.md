@@ -1,6 +1,4 @@
-# Capstone B — TeleConnect: Customer Churn Analysis
-
-**Naresh IT · Python for Full Stack Data Science with AI & Generative AI · Lead Trainer: Ajit Byru**
+ TeleConnect: Customer Churn Analysis
 
 You are the analyst the VP Customer hired to answer one question: who is leaving, and what do they have in common?
 
